@@ -1,7 +1,7 @@
 branches: "main"
 pipeline:
     build:
-        image: "registry.home.estelsmith.com/alpine:3.17"
+        image: "registry.home.estelsmith.com/ci-docker:latest"
         privileged: true
         volumes:
             - "/var/run/docker.sock:/var/run/docker.sock"
@@ -10,7 +10,6 @@ pipeline:
             - "registry_username"
             - "registry_password"
         commands:
-            - "apk --no-cache add docker-cli docker-cli-buildx"
             - >
                 docker login
                 -u "$${REGISTRY_USERNAME}"
